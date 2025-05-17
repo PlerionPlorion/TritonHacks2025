@@ -2,8 +2,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-red-main: oklch(0.36 0.147571 29.2339);
+  --color-red-dark: oklch(0.36 0.147571 29.2339);
+  --color-redlight: oklch(0.52 0.2019 25.94);
   --color-offwhite: oklch(0.98 0.0171 84.59);
+  --color-greyblue: oklch(0.68 0.0346 273.89);
+  --color-blackheader: oklch(0.24 0 0);
   --font-IBM:"IBM Plex Sans KR", "";
 }
 
