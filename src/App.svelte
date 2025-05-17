@@ -32,11 +32,10 @@
                 class="size-12 hover:drop-shadow-[0_0_0.8rem_#e85f24] transition-all duration-900"
                 src={tritonLogo}
                 alt="Triton Logo"
-				on:dblclick={altUI}
-				
+                on:dblclick={altUI}
             />
             <div
-                class="mt-3 w-577 h-103 justify-start hover:drop-shadow-[0_0_0.8rem_#e85f24] transition-all duration-900 text-white text-3xl font-(family-name:IBM Plex Sans KR)"
+                class="mt-4 w-24 h-12 justify-start hover:drop-shadow-[0_0_0.8rem_#e85f24] transition-all duration-900 text-white text-3xl font-(family-name:IBM Plex Sans KR)"
             >
                 N.11 PIZZA
             </div>
@@ -44,14 +43,19 @@
         <div class="self-stretch outline-[2px] outline-gray-900"></div>
     </section>
 
-    
-    
     <section class="flex flex-col items-center justify-center mt-1">
-        <div class="text-3xl font-(family-name:IBM Plex Sans KR)">{TritonMessage[switchUIInt]}</div>
-        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Version 0.0.1</div>
-        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Node: {nodeVersion}</div>
-        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Chrome: {chromeVersion}</div>
+        <div class="text-3xl font-(family-name:IBM Plex Sans KR)">
+            {TritonMessage[switchUIInt]}
+        </div>
+        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">
+            Version 0.0.1
+        </div>
+        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">
+            Node: {nodeVersion}
+        </div>
+        <div class="text-2xl font-(family-name:IBM Plex Sans KR)">
+            Chrome: {chromeVersion}
+        </div>
         <div class="w-screen"><Map /></div>
-
     </section>
 </main>
