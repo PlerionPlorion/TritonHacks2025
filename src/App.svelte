@@ -1,5 +1,6 @@
 <script>
     import tritonLogo from "./assets/triton.png";
+    import Map from "./lib/map.svelte";
     const nodeVersion = api.node();
     const chromeVersion = api.chrome();
     let switchUI = false;
@@ -50,7 +51,7 @@
         <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Version 0.0.1</div>
         <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Node: {nodeVersion}</div>
         <div class="text-2xl font-(family-name:IBM Plex Sans KR)">Chrome: {chromeVersion}</div>
-        <!-- <div class="w-screen"><Map /></div> -->
+        <div class="w-screen"><Map /></div>
 
     </section>
 </main>
