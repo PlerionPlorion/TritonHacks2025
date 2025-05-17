@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-red-main: oklch(0.36 0.147571 29.2339);
+  --color-offwhite: oklch(0.98 0.0171 84.59);
+  --font-IBM:"IBM Plex Sans KR", "";
+}
+
+
 
 ::-webkit-scrollbar {
   display: none;
