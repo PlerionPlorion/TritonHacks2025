@@ -10,8 +10,6 @@
   --font-IBM:"IBM Plex Sans KR", "";
 }
 
-
-
 ::-webkit-scrollbar {
   display: none;
 }
@@ -24,18 +22,22 @@ input::placeholder {
   color: oklch(0.36 0.147571 29.2339);
 }
 
-/* Radio Buttons :p */
+
+/* --- Radio Buttons :p --- */
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 9999px;
+  outline: 1vw #780000 solid;
+  outline-offset: -0.0625vw;
 }
 
 /* Hide the browser's default radio button */
@@ -50,38 +52,20 @@ input::placeholder {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #eee;
-  width: 56px;
-  height: 56px;
+  width: 7vw;
+  height: 7vw;
   border-radius: 9999px;
-  outline: 8px #780000 solid;
 }
 
-/* On mouse-over, add a grey background color to the radio button*/
-.container:hover input {
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-/* When the radio button is checked, it gets red*/
+
+/* When the radio button is checked, add a red background */
 .container input:checked ~ .checkmark {
   background-color: #C1121F;
-}
-
-.f_span {
-    color: #C1121F;
-    font-size: 20px;
-    font-family: IBM Plex Sans KR;
-    font-weight: 700;
-    text-transform: uppercase;
-    word-wrap: break-word;
-}
-
-.text-4 {
-    width: 56px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
 }
 
 .frame-5 {
@@ -89,9 +73,9 @@ input::placeholder {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 25px;  
+    gap: 3.128vw;
     display: inline-flex;
+    margin: 2vw;
 }
-
 
 

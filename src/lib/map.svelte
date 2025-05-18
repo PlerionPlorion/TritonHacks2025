@@ -8,7 +8,7 @@
 <iframe
     title="Google Map"
     height="400px"
-    style="width:100%"
+    class="w-full"
     loading="eager"
     referrerpolicy="no-referrer-when-downgrade"
     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBmAZivCpSXxUiw5UJxrilGzBdCitu030g&q={latitude}, {longitude}"
