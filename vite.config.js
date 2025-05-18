@@ -1,12 +1,13 @@
-import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite'
 
-// https://vitejs.dev/config/
+const target = process.env.BUILD_TARGET || 'electron'
+
 export default defineConfig({
-  base: process.env.DEV_ENV == 'true' ? '/' : './',
+  base: target === 'gh-pages' ? '/TritonHacks2025/' : './',
   build: {
-    outDir: 'electron/build'
+    outDir: target === 'gh-pages' ? 'dist' : 'electron/build'
   },
-  plugins: [svelte(), tailwindcss()],
+  plugins: [svelte(), tailwindcss()]
 })

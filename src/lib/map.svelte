@@ -1,6 +1,6 @@
 <script>
-    const latitude = currentLocation.currentLatitude;
-    const longitude = currentLocation.currentLongitude;
+    const latitude = window.currentLocation?.getLatitude();
+    const longitude = window.currentLocation?.getLongitude();
     console.log(latitude, longitude);
 </script>
 

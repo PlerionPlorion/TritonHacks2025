@@ -1,71 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-red-dark: oklch(0.36 0.147571 29.2339);
-  --color-redlight: oklch(0.52 0.2019 25.94);
-  --color-offwhite: oklch(0.98 0.0171 84.59);
-  --color-greyblue: oklch(0.68 0.0346 273.89);
-  --color-blackheader: oklch(0.24 0 0);
-  --font-IBM:"IBM Plex Sans KR", "";
+    --color-red-dark: oklch(0.36 0.147571 29.2339);
+    --color-redlight: oklch(0.52 0.2019 25.94);
+    --color-offwhite: oklch(0.98 0.0171 84.59);
+    --color-greyblue: oklch(0.68 0.0346 273.89);
+    --color-btnclicked: oklch(0.47 0.0248 273.62);
+    --color-sliderchecked: oklch(0.57 0.1806 143.98);
+    --color-blackheader: oklch(0.24 0 0);
+    --font-IBM: "IBM Plex Sans KR", "";
 }
 
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 input::placeholder {
-  font-family: IBM Plex Sans KR;
-  text-align: center;
-  font-weight: bold;
-  opacity: 0.5;
-  color: oklch(0.36 0.147571 29.2339);
+    font-family: IBM Plex Sans KR;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.5;
+    color: oklch(0.36 0.147571 29.2339);
 }
-
 
 /* --- Radio Buttons :p --- */
 .container {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 7vw;
-  height: 7vw;
-  border-radius: 9999px;
-  outline: 1vw #780000 solid;
-  outline-offset: -0.0625vw;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 9999px;
+    outline: 1vw #780000 solid;
+    outline-offset: -0.0625vw;
 }
 
 /* Hide the browser's default radio button */
 .container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
 /* Custom radio button (unclicked) */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 7vw;
-  height: 7vw;
-  border-radius: 9999px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 9999px;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+    background-color: #ccc;
 }
-
 
 /* When the radio button is checked, add a red background */
 .container input:checked ~ .checkmark {
-  background-color: #C1121F;
+    background-color: #c1121f;
 }
 
 .frame-5 {
@@ -78,4 +78,36 @@ input::placeholder {
     margin: 2vw;
 }
 
+/* Dialog Box Animmation */
+dialog {
+    animation: slide-down 0.7s ease-out;
+}
 
+dialog[open] {
+    animation: slide-up 0.7s ease-out;
+}
+
+dialog[open]::backdrop {
+    animation: backdrop-fade-in 0.7s ease-out forwards;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(0%);
+        display: flex;
+    }
+
+    to {
+        transform: translateY(-100%);
+        display: flex;
+    }
+}

@@ -11,9 +11,12 @@
     "dev:vite": "vite",
     "dev:electron": "cross-env DEV_ENV=true electron .",
     "build": "vite build",
+    "build:electron": "cross-env BUILD_TARGET=electron vite build",
+    "build:gh": "cross-env BUILD_TARGET=gh-pages vite build",
     "preview": "vite preview",
-    "package": "npm run build && electron-forge package",
-    "make": "npm run build && electron-forge make"
+    "package": "npm run build:electron && electron-forge package",
+    "make": "npm run build:electron && electron-forge make",
+    "deploy": "npm run build:gh && gh-pages -d dist"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.6.1",
@@ -33,6 +36,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
+    "gh-pages": "^6.3.0",
     "matter-js": "^0.20.0"
   }
 }
