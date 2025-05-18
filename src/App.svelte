@@ -1,6 +1,6 @@
 <script>
   import Logo from "./assets/n11logo.svg";
-  import Map from "./lib/Map.svelte";
+  import Map from "./lib/map.svelte";
   const nodeVersion = api.node();
   const chromeVersion = api.chrome();
   let switchUI = false;
@@ -86,7 +86,7 @@
         </div>
       </div>
       <!-- Cream Section #1  -->
-      <div class="w-full flex flex-col items-center size-100 p-4 bg-offwhite">
+      <div class="w-full flex flex-col items-center p-4 bg-offwhite">
         <!-- What type of assistance do you need? -->
         <div class="text-2xl font-IBM text-black font-bold">
           {firstQuestion[switchUIInt]}
@@ -184,4 +184,112 @@
     </div>
   </section>
   <!-- End Section #1 -->
+
+    <!-- First Section -->
+  <section class="flex flex-col items-center justify-center mt-1">
+    <div class="mx-4 w-fit">
+      <!-- Question Header -->
+      <div class="w-full bg-black text-center">
+        <div class="m-auto text-3xl font-IBM font-light text-white">
+          {firstSection[switchUIInt]}
+        </div>
+      </div>
+      <!-- Cream Section #1  -->
+      <div class="w-full flex flex-col items-center p-4 bg-offwhite">
+        <!-- What type of assistance do you need? -->
+        <div class="text-2xl font-IBM text-black font-bold">
+          {firstQuestion[switchUIInt]}
+        </div>
+        <!--Police Button-->
+        <div class="mt-4 flex">
+          <div
+            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+          >
+            <button class="m-5 text-xl font-IBM font-light text-white">
+              {policeBtn[switchUIInt]}
+            </button>
+          </div>
+          <!--Medical Button-->
+          <div
+            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+          >
+            <button class="m-5 text-xl font-IBM font-light text-white">
+              {medicalBtn[switchUIInt]}
+            </button>
+          </div>
+        </div>
+        <!-- Line break under buttons -->
+        <div class="mt-4 self-stretch outline-[2px] outline-black"></div>
+
+        <!-- Where are you right now? -->
+        <div class="text-2xl font-IBM text-black font-bold">
+          {secondQuestion[switchUIInt]}
+        </div>
+
+        <!--Where are you right now? text box-->
+          <div class="">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ADDRESS BOX"
+              class="w-fit bg-white rounded border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+        </div>
+        <div class= "mt-4 text-2xl font-IBM text-black font-bold">
+          OR
+        </div>
+        <!-- Google Maps Display-->
+        <div class="w-screen"><Map /></div>
+
+        <!--Line Break-->
+        <div class="mt-4 self-stretch outline-[2px] outline-black"></div>
+
+        <!-- Are you being moved right now? -->
+        <div class="mt-4 text-2xl font-IBM text-black font-bold">
+          {thirdQuestion[switchUIInt]}
+        </div>
+        <div class="mt-4 flex">
+          <div
+            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+          >
+          <!-- Yes being Moved Button-->
+            <button class="m-5 text-xl font-IBM font-normal text-white">
+              {beingMovedYes[switchUIInt]}
+            </button>
+          </div>
+          <!--NO being Moved Button-->
+          <div
+            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+          >
+            <button class="m-5 text-xl font-IBM font-normal text-white">
+              {beingMovedNo[switchUIInt]}
+            </button>
+          </div>
+        </div>
+
+        <!-- Describe your surroundings text box-->
+          <div class="mt-4 mb-4">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder= {beingMovedBox[switchUIInt]}
+              class="w-fit bg-white rounded border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+        </div>
+
+        <!-- Line Break -->
+        <div class="mt-4 self-stretch outline-[2px] outline-black"></div>
+        
+        <!-- Stream Button -->
+        <div class="w-fit mt-4 bg-greyblue flex flex-box float-left rounded-lg">
+          <button class="m-5 text-xl font-IBM text-white font-normal">
+            {streamStartBtn[switchUIInt]}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </main>
