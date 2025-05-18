@@ -1,9 +1,10 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount, tick } from "svelte";
     import Arrow from "./assets/arrow.svg";
     import Logo from "./assets/n11logo.svg";
     import orderSuccess from "./assets/ordersucessess.svg";
     import Map from "./lib/map.svelte";
+
     let showDialog = false;
     let dialogStyle = "";
     let switchUI = false;
@@ -35,8 +36,8 @@
         "Where are you right now?",
     ];
     let thirdQuestion = ["Are you being moved right now?", "Delivery Method"];
-    let beingMovedYes = ["YES", "PICKUP"];
-    let beingMovedNo = ["NO", "DELIVERY"];
+    let beingMovedYes = ["Yes", "Pickup"];
+    let beingMovedNo = ["No", "Delivery"];
     let beingMovedBox = [
         "Describe your surroundings or vehicle",
         "Describe your vehicle or house",
@@ -60,9 +61,9 @@
         "If yes, with what?",
         "How would you like your cheese?",
     ];
-    let bladeBtn = ["BLADE", "SHREDDED"];
-    let firearmBtn = ["FIREARM", "BLOCK"];
-    let explosiveBtn = ["EXPLOSIVE", "HALF & HALF"];
+    let bladeBtn = ["Blade", "Shredded"];
+    let firearmBtn = ["Firearm", "Block"];
+    let explosiveBtn = ["Explosive", "Half & Half"];
     let fourthQuestion2 = ["Are you hurt?", "Add cheese dip?"];
     let fifthQuestion2 = [
         "How many hostiles in the room?",
@@ -94,20 +95,20 @@
 
     let thridQuestion3 = ["Hair Color", "Sauce Amount"];
 
-    let whiteAnswerBtn = ["White", "HONEY"];
-    let blackAnswerBtn = ["Black", "GARLIC"];
-    let asianAnswerBtn = ["Asian", "ALFREDO"];
-    let hispanicAnswerBtn = ["Hispanic", "RANCH"];
+    let whiteAnswerBtn = ["White", "Honey"];
+    let blackAnswerBtn = ["Black", "Garlic"];
+    let asianAnswerBtn = ["Asian", "Alfredo"];
+    let hispanicAnswerBtn = ["Hispanic", "Ranch"];
 
-    let blondHairAnswerBtn = ["Blonde", "LIGHT"];
-    let blackHairAnswerBtn = ["Black", "NORMAL"];
-    let brownHairAnswerBtn = ["Brown", "EXTRA"];
-    let unknownHairAnswerBtn = ["Unknown", "NONE"];
+    let blondHairAnswerBtn = ["Blonde", "Light"];
+    let blackHairAnswerBtn = ["Black", "Normal"];
+    let brownHairAnswerBtn = ["Brown", "Extra"];
+    let unknownHairAnswerBtn = ["Unknown", "None"];
 
-    let blueEyeAnswerBtn = ["Blue", "PEPPER"];
-    let brownEyeAnswerBtn = ["Brown", "OREGANO"];
-    let greenEyeAnswerBtn = ["Green", "SALT"];
-    let unknowonEyeAnswerBtn = ["Unknown", "ROSEMARY"];
+    let blueEyeAnswerBtn = ["Blue", "Pepper"];
+    let brownEyeAnswerBtn = ["Brown", "Oregano"];
+    let greenEyeAnswerBtn = ["Green", "Salt"];
+    let unknowonEyeAnswerBtn = ["Unknown", "Rosemary"];
 
     let fourthQuestion3 = ["Eye Color", "Sauce Seasoning"];
 
@@ -127,20 +128,20 @@
 
     let thridQuestion4 = ["Hair Color", "Greens"];
 
-    let whiteUserAnswerBtn = ["White", "HAM"];
-    let blackUserAnswerBtn = ["Black", "BEEF"];
-    let asianUserAnswerBtn = ["Asian", "BACON"];
-    let hispanicUserAnswerBtn = ["Hispanic", "PEPPORONI"];
+    let whiteUserAnswerBtn = ["White", "Ham"];
+    let blackUserAnswerBtn = ["Black", "Beef"];
+    let asianUserAnswerBtn = ["Asian", "Bacon"];
+    let hispanicUserAnswerBtn = ["Hispanic", "Pepperoni"];
 
-    let blondHairUserAnswerBtn = ["Blonde", "SPINACH"];
-    let blackHairUserAnswerBtn = ["Black", "ARTICHOKE"];
-    let brownHairUserAnswerBtn = ["Brown", "BASIL"];
-    let unknownHairUserAnswerBtn = ["Other", "NONE"];
+    let blondHairUserAnswerBtn = ["Blonde", "Spinach"];
+    let blackHairUserAnswerBtn = ["Black", "Artichoke"];
+    let brownHairUserAnswerBtn = ["Brown", "Basil"];
+    let unknownHairUserAnswerBtn = ["Other", "None"];
 
-    let blueEyeUserAnswerBtn = ["Blue", "HAWAIIAN"];
-    let brownEyeUserAnswerBtn = ["Brown", "OLIVES"];
-    let greenEyeUserAnswerBtn = ["Green", "PEPPER"];
-    let unknowonEyeUserAnswerBtn = ["Unknown", "ONION"];
+    let blueEyeUserAnswerBtn = ["Blue", "Hawaiian"];
+    let brownEyeUserAnswerBtn = ["Brown", "Olives"];
+    let greenEyeUserAnswerBtn = ["Green", "Pepper"];
+    let unknowonEyeUserAnswerBtn = ["Unknown", "Onion"];
 
     let fourthQuestion4 = ["Eye Color", "Sauce Seasoning"];
 
@@ -161,7 +162,7 @@
         "If possible, keep the app open for updates. As the situation develops, please provide additional information if needed.",
         "Keep the app open for updates! If needed, call your store to add additional information. Remember to tip your driver and enjoy your pizza!",
     ];
-    let submitBtn = ["FINISH", "Submit"];
+    let submitBtn = ["FINISH", "SUBMIT"];
 
     function altUI() {
         switchUI = !switchUI;
@@ -173,21 +174,55 @@
     }
 
     // -- Server JS --
- 
-        async () => {
-          await tick();
-            var arrayCB = [];
+    // TODO: Radio button support :p
+    let policeChecked = false;
+    let medicalChecked = false;
+    let addressValue = "";
+    let surroundingsValue = "";
+    let hostageChecked = false;
+    let armedChecked = false;
+    let armedWithValue = "";
+    let hurtChecked = false;
+    let minorsChecked = false;
 
-            if (document.getElementById('policeCheckbox').checked) {
-                arrayCB.push({ policeCheckbox: document.getElementById('policeCheckbox').value });
-            }
+    let captorGenderChecked = false;
+    let captorClothingValue = "";
+    let captorAnythingElse = "";
+    
+    let userGenderChecked = false;
+    let userClothingValue = "";
+    let userAnythingElse = "";
+    let additonalInfoValue = "";
 
-            var JSONResponse = JSON.stringify(arrayCB);
+    async function jsonArray() {
+        await tick();
+        let arrayCB = [];
 
-            alert(JSONResponse);
+        arrayCB.push(
+            { police: policeChecked },
+            { medical: medicalChecked },
+            { address: addressValue },
+            { surroundings: surroundingsValue },
+            { hostage: hostageChecked },
+            { armed: armedChecked },
+            { armedWith: armedWithValue },
+            { hurt: hurtChecked },
+            { captorGender: captorGenderChecked },
+            { captorClothing: captorClothingValue },
+            { userGender: userGenderChecked  },
+            { userClothing: userClothingValue  },
+            { userAnythingElse: userAnythingElse },
+            { additionalInfo: additonalInfoValue }
+        );
 
-            return JSONResponse;
-        }
+        const JSONResponse = JSON.stringify(arrayCB);
+        // const filePath = './response.json'
+        // fs.writeFileSync(filePath, JSONResponse, 'utf-8');
+        console.log(JSONResponse);
+    }
+    setInterval(() => {
+        jsonArray();
+    }, 5000);
 </script>
 
 <!-- Drag Bar -->
@@ -264,6 +299,7 @@
                         <input
                             type="checkbox"
                             id="policeCheckbox"
+                            bind:checked={policeChecked}
                             class="hidden peer"
                         />
                         <label
@@ -280,6 +316,7 @@
                         <input
                             type="checkbox"
                             id="medicalCheckbox"
+                            bind:checked={medicalChecked}
                             class="hidden peer"
                         />
                         <label
@@ -306,6 +343,7 @@
                         type="address"
                         id="address"
                         name="address"
+                        bind:value={addressValue}
                         placeholder="ADDRESS BOX"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -368,6 +406,7 @@
                         type="surroundings"
                         id="surroundings"
                         name="surroundings"
+                        bind:value={surroundingsValue}
                         placeholder={beingMovedBox[switchUIInt]}
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -389,7 +428,7 @@
                     />
                     <label
                         for="beginStreamBtn"
-                        class="h-17 w-full text-xl font-IBM font-light text-white flex items-center justify-center cursor-pointer peer-checked:bg-red-dark peer-checked:rounded-lg"
+                        class="h-17 w-full text-xl font-IBM font-light text-white flex items-center justify-center cursor-pointer peer-checked:bg-red-dark peer-checked:rounded-lg text-center"
                     >
                         {streamStartBtn[switchUIInt]}
                     </label>
@@ -423,9 +462,9 @@
                                 class="relative inline-block ml-auto mr-2 w-fit h-fit"
                             >
                                 <input
-                                    checked
                                     id="hostage-switch-component"
                                     type="checkbox"
+                                    bind:checked={hostageChecked}
                                     class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                                 />
                                 <label
@@ -447,9 +486,9 @@
                                 class="relative inline-block ml-auto mr-2 float-right w-fit h-fit"
                             >
                                 <input
-                                    checked
                                     id="armed-switch-component"
                                     type="checkbox"
+                                    bind:checked={armedChecked}
                                     class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                                 />
                                 <label
@@ -522,6 +561,7 @@
                             type="weaponDesc"
                             id="weaponDesc"
                             name="weaponDesc"
+                            bind:value={armedWithValue}
                             placeholder="BRIEFLY DESCRIBE"
                             class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                         />
@@ -539,9 +579,9 @@
                                 class="relative inline-block ml-auto mr-2 float-right w-fit h-fit"
                             >
                                 <input
-                                    checked
                                     id="hurt-switch-component"
                                     type="checkbox"
+                                    bind:checked={hurtChecked}
                                     class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                                 />
                                 <label
@@ -724,9 +764,9 @@
                         class="relative inline-block ml-auto mr-2 float-right w-fit h-fit"
                     >
                         <input
-                            checked
                             id="minors-switch-component"
                             type="checkbox"
+                            bind:checked={minorsChecked}
                             class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                         />
                         <label
@@ -770,9 +810,9 @@
                                     class="relative inline-block ml-auto w-fit h-fit"
                                 >
                                     <input
-                                        checked
                                         id="malefemale-switch-component"
                                         type="checkbox"
+                                        bind:checked={captorGenderChecked}
                                         class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                                     />
                                     <label
@@ -1026,6 +1066,7 @@
                     <input
                         type="clothingDesc"
                         id="clothingDesc"
+                        bind:value={captorClothingValue}
                         name="clothingDesc"
                         placeholder="BRIEFLY DESCRIBE"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -1043,6 +1084,7 @@
                         type="etc"
                         id="etc"
                         name="etc"
+                        bind:value={captorAnythingElse}
                         placeholder="BRIEFLY DESCRIBE"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -1081,9 +1123,9 @@
                                     class="relative inline-block ml-auto w-fit h-fit"
                                 >
                                     <input
-                                        checked
                                         id="malefemale-User-switch-component"
                                         type="checkbox"
+                                        bind:checked={userGenderChecked}
                                         class="peer appearance-none outline-red-dark outline-7 w-[90px] h-[39px] bg-offwhite rounded-full checked:bg-offwhite cursor-pointer transition-colors duration-300"
                                     />
                                     <label
@@ -1338,6 +1380,7 @@
                         type="clothingDescUSER"
                         id="clothingDescUSER"
                         name="clothingDescUSER"
+                        bind:value={userClothingValue}
                         placeholder="BRIEFLY DESCRIBE"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -1354,6 +1397,7 @@
                         type="etcUSER"
                         id="etcUSER"
                         name="etcUSER"
+                        bind:value={userAnythingElse}
                         placeholder="BREIFLY DESCRIBE"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -1385,6 +1429,7 @@
                         type="extraDetail"
                         id="extraDetail"
                         name="extraDetail"
+                        bind:value={additonalInfoValue}
                         placeholder="ADDITIONAL INFORMATION"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
