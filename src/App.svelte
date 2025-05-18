@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import Arrow from "./assets/arrow.svg";
     import Logo from "./assets/n11logo.svg";
+    import orderSuccess from "./assets/ordersucessess.svg";
     import Map from "./lib/map.svelte";
     let showDialog = false;
     let dialogStyle = "";
@@ -93,76 +94,74 @@
 
     let thridQuestion3 = ["Hair Color", "Sauce Amount"];
 
-    // TODO: ADD BUTTONS HERE
-    // TODO: Add Height (q3) and weight (q4)
-    let whiteAnswerBtn = ["White", "Honey"];
-    let blackAnswerBtn = ["Black", "Garlic"];
-    let asianAnswerBtn = ["Asian", "Alfredo"];
-    let hispanicAnswerBtn = ["Hispanic", "Ranch"];
+    let whiteAnswerBtn = ["White", "HONEY"];
+    let blackAnswerBtn = ["Black", "GARLIC"];
+    let asianAnswerBtn = ["Asian", "ALFREDO"];
+    let hispanicAnswerBtn = ["Hispanic", "RANCH"];
 
-    let blondHairAnswerBtn = ["Blond", "Light"];
-    let blackHairAnswerBtn = ["Black", "Normal"];
-    let brownHairAnswerBtn = ["Brown", "Extra"];
-    let unknownHairAnswerBtn = ["Unknown", "None"];
+    let blondHairAnswerBtn = ["Blonde", "LIGHT"];
+    let blackHairAnswerBtn = ["Black", "NORMAL"];
+    let brownHairAnswerBtn = ["Brown", "EXTRA"];
+    let unknownHairAnswerBtn = ["Unknown", "NONE"];
 
-    let blueEyeAnswerBtn = ["BLUE", "PEPPER"];
-    let brownEyeAnswerBtn = ["BROWN", "OREGANO"];
-    let greenEyeAnswerBtn = ["GREEN", "SALT"];
-    let unknowonEyeAnswerBtn = ["UNKOWN", "ROSEMARY"];
+    let blueEyeAnswerBtn = ["Blue", "PEPPER"];
+    let brownEyeAnswerBtn = ["Brown", "OREGANO"];
+    let greenEyeAnswerBtn = ["Green", "SALT"];
+    let unknowonEyeAnswerBtn = ["Unknown", "ROSEMARY"];
 
     let fourthQuestion3 = ["Eye Color", "Sauce Seasoning"];
 
     let fifthQuestion3 = ["Clothing", "Special Sauce Request:"];
-    // TODO: ADD BUTTONS HERE
 
     let sixthQuestion3 = ["Anything Else", "Any Allergies?"];
-    // TODO: ADD BUTTONS HERE
-    // TODO: ADD colothing (q7) and anything else (q8)
 
     // -- SECTION 4 --
     // TODO: just duplicate the above but make this after you make that one
     let fourthSection = ["4. DESCRIBE YOURSELF", "4. ADD YOUR TOPPINGS"];
 
-    let firstQuestion4 = ["Male or Female", "Add N.11 Dip? (+$0.99)"];
+    let firstQuestion4 = ["Male or Female", "Toppings?"];
 
     let maleUserSliderDisplay = ["Male", "No"];
 
-    let secondQuestion4 = ["Race", "Sauce Types"];
+    let secondQuestion4 = ["Race", "Meats"];
 
-    let thridQuestion4 = ["Hair Color", "Sauce Amount"];
+    let thridQuestion4 = ["Hair Color", "Greens"];
 
-    // TODO: ADD BUTTONS HERE
-    // TODO: Add Height (q3) and weight (q4)
-    let whiteUserAnswerBtn = ["White", "Honey"];
-    let blackUserAnswerBtn = ["Black", "Garlic"];
-    let asianUserAnswerBtn = ["Asian", "Alfredo"];
-    let hispanicUserAnswerBtn = ["Hispanic", "Ranch"];
+    let whiteUserAnswerBtn = ["White", "HAM"];
+    let blackUserAnswerBtn = ["Black", "BEEF"];
+    let asianUserAnswerBtn = ["Asian", "BACON"];
+    let hispanicUserAnswerBtn = ["Hispanic", "PEPPORONI"];
 
-    let blondHairUserAnswerBtn = ["Blond", "Light"];
-    let blackHairUserAnswerBtn = ["Black", "Normal"];
-    let brownHairUserAnswerBtn = ["Brown", "Extra"];
-    let unknownHairUserAnswerBtn = ["Unknown", "None"];
+    let blondHairUserAnswerBtn = ["Blonde", "SPINACH"];
+    let blackHairUserAnswerBtn = ["Black", "ARTICHOKE"];
+    let brownHairUserAnswerBtn = ["Brown", "BASIL"];
+    let unknownHairUserAnswerBtn = ["Other", "NONE"];
 
-    let blueEyeUserAnswerBtn = ["BLUE", "PEPPER"];
-    let brownEyeUserAnswerBtn = ["BROWN", "OREGANO"];
-    let greenEyeUserAnswerBtn = ["GREEN", "SALT"];
-    let unknowonEyeUserAnswerBtn = ["UNKOWN", "ROSEMARY"];
+    let blueEyeUserAnswerBtn = ["Blue", "HAWAIIAN"];
+    let brownEyeUserAnswerBtn = ["Brown", "OLIVES"];
+    let greenEyeUserAnswerBtn = ["Green", "PEPPER"];
+    let unknowonEyeUserAnswerBtn = ["Unknown", "ONION"];
 
     let fourthQuestion4 = ["Eye Color", "Sauce Seasoning"];
 
     let fifthQuestion4 = ["Clothing", "Special Sauce Request:"];
- 
+
     let sixthQuestion4 = ["Anything Else", "Any Allergies?"];
 
     // -- SECTION 5 --
-    let fifthSection = ["5. ADDITIONAL INFORMATION", "3. CUSTOMIZE YOUR SAUCE"];
+    let fifthSection = [
+        "5. ADDITIONAL INFORMATION",
+        "5. ADDITIONAL INFORMATION",
+    ];
+    let firstQuestion5 = ["Anything else?", "Anything else?"];
 
     // -- SECTION 6 --
     let sixthSection = ["ORDER SUBMITTED!", "ORDER SUBMITTED!"];
     let firstQuestion6 = [
-        "If possible, keep the app open for updates. As the situation develops, please provide additional information in the chat if needed.",
-        "Keep the app open for updates! If needed, contact your store using the chat. Remember to tip your driver and enjoy your pizza!",
+        "If possible, keep the app open for updates. As the situation develops, please provide additional information if needed.",
+        "Keep the app open for updates! If needed, call your store to add additional information. Remember to tip your driver and enjoy your pizza!",
     ];
+    let submitBtn = ["FINISH", "Submit"];
 
     function altUI() {
         switchUI = !switchUI;
@@ -172,6 +171,23 @@
             switchUIInt = 0;
         }
     }
+
+    // -- Server JS --
+ 
+        async () => {
+          await tick();
+            var arrayCB = [];
+
+            if (document.getElementById('policeCheckbox').checked) {
+                arrayCB.push({ policeCheckbox: document.getElementById('policeCheckbox').value });
+            }
+
+            var JSONResponse = JSON.stringify(arrayCB);
+
+            alert(JSONResponse);
+
+            return JSONResponse;
+        }
 </script>
 
 <!-- Drag Bar -->
@@ -183,7 +199,7 @@
 
     <!-- Header -->
     <section
-        class="w-screen pt-3 pb-3 inline-flex flex-col bg-red-dark justify-start items-center gap-5"
+        class="w-screen pt-3 pb-3 inline-flex flex-col bg-red-dark justify-start items-center gap-5 sticky fixed top-0 right-0 left-0 z-900"
     >
         <div class="self-stretch px-9 inline-flex justify-between items-center">
             <input
@@ -202,20 +218,25 @@
     </section>
 
     <!-- Dialog -->
-    <dialog class="${dialogStyle}" open={showDialog}>
+    <dialog class="${dialogStyle} z-901" open={showDialog}>
         <div
             class="flex flex-col justify-center pt-4 w-full h-[300px] bg-offwhite border-4 border-red-dark rounded-xl"
         >
-        <div class="flex items-center">
-        <img src={Arrow} alt="Arrow" class="ml-4 -mt-6 mr-auto">
-        <p class="mx-4 -mt-20 font-IBM text-3xl font-bold">Double click the logo to swap between Pizza & 911 Interfaces at any time. 
-Your responses will be broadcasted live to a 911 operator, regardless of your screen.</p>
-        </div>
-        <div class="flex flex-col mx-auto items-center justify-center">
-            <button
-                class="w-32 h-10 text-white text-2xl font-IBM -mt-15 bg-redlight outline-red-dark outline-8 rounded-xl"
-                on:click={closeModal}>CLOSE</button
-            >
+            <div class="flex items-center">
+                <img src={Arrow} alt="Arrow" class="ml-4 -mt-6 mr-auto" />
+                <p
+                    class="mx-4 -mt-20 font-IBM lg:text-4xl md:text-3xl sm:text-xl font-bold"
+                >
+                    Double click the logo to swap between Pizza & 911 Interfaces
+                    at any time. Your responses will be broadcasted live to a
+                    911 operator, regardless of your screen.
+                </p>
+            </div>
+            <div class="flex flex-col mx-auto items-center justify-center">
+                <button
+                    class="w-32 h-10 text-white text-2xl font-IBM -mt-15 bg-redlight outline-red-dark outline-8 rounded-xl"
+                    on:click={closeModal}>CLOSE</button
+                >
             </div>
         </div>
     </dialog>
@@ -760,7 +781,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                                     >
                                     </label>
                                 </div>
-                                <div class="float-left mr-3 mt-2 font-IBM font-light">
+                                <div
+                                    class="float-left mr-3 mt-2 font-IBM font-light"
+                                >
                                     {maleSliderDisplay[switchUIInt]}
                                 </div>
                             </div>
@@ -769,7 +792,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Race prompt -->
-                <div class="mb-3 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {secondQuestion3[switchUIInt]}
                 </div>
 
@@ -842,7 +867,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Hair Color -->
-                <div class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {thridQuestion3[switchUIInt]}
                 </div>
 
@@ -915,7 +942,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Eye Color -->
-                <div class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {fourthQuestion3[switchUIInt]}
                 </div>
 
@@ -1014,7 +1043,7 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                         type="etc"
                         id="etc"
                         name="etc"
-                        placeholder="BREIFLY DESCRIBE"
+                        placeholder="BRIEFLY DESCRIBE"
                         class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                 </div>
@@ -1063,7 +1092,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                                     >
                                     </label>
                                 </div>
-                                <div class="float-left mr-3 mt-2 font-IBM font-light">
+                                <div
+                                    class="float-left mr-3 mt-2 font-IBM font-light"
+                                >
                                     {maleUserSliderDisplay[switchUIInt]}
                                 </div>
                             </div>
@@ -1072,7 +1103,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Race prompt USER -->
-                <div class="mb-3 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {secondQuestion4[switchUIInt]}
                 </div>
 
@@ -1145,7 +1178,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Hair Color USER -->
-                <div class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {thridQuestion4[switchUIInt]}
                 </div>
 
@@ -1205,11 +1240,11 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                     >
                         <input
                             type="checkbox"
-                            id="unknownHairCheckbox"
+                            id="unknownHairUserCheckbox"
                             class="hidden peer"
                         />
                         <label
-                            for="unknownHairCheckbox"
+                            for="unknownHairUserCheckbox"
                             class="h-17 w-full text-xl font-IBM font-light text-white flex items-center justify-center cursor-pointer peer-checked:bg-btnclicked peer-checked:rounded-lg"
                         >
                             {unknownHairUserAnswerBtn[switchUIInt]}
@@ -1218,7 +1253,9 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
                 </div>
 
                 <!-- Eye Color User -->
-                <div class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full">
+                <div
+                    class="mb-3 mt-5 text-2xl font-IBM text-black font-bold flex-column text-left w-full"
+                >
                     {fourthQuestion4[switchUIInt]}
                 </div>
 
@@ -1326,5 +1363,74 @@ Your responses will be broadcasted live to a 911 operator, regardless of your sc
     </section>
     <!--End Section #4-->
 
-    
+    <!--Section #5: ADDITIONAL INFORMATION-->
+    <section class="flex flex-col items-center justify-center mt-5 mx-9">
+        <div class="mx-4 w-full">
+            <!-- Question Header -->
+            <div class="w-full bg-black text-center">
+                <div class="m-auto text-3xl font-IBM font-light text-white">
+                    {fifthSection[switchUIInt]}
+                </div>
+            </div>
+            <!-- Cream Section #5  -->
+            <div class="w-full flex flex-col items-center p-4 bg-offwhite">
+                <!-- Anything Else? -->
+                <div class="mb-3 text-2xl font-IBM text-black font-bold">
+                    {firstQuestion5[switchUIInt]}
+                </div>
+
+                <!--Anything else text box-->
+                <div class="flex items-center mt-4 w-full">
+                    <input
+                        type="extraDetail"
+                        id="extraDetail"
+                        name="extraDetail"
+                        placeholder="ADDITIONAL INFORMATION"
+                        class="w-full mx-2 bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                </div>
+
+                <!-- Submit Button -->
+                <div
+                    class="mt-5 w-full mx-2 bg-redlight flex flex-box float-left rounded-lg outline-5 outline-red-dark"
+                >
+                    <input type="checkbox" id="finishBtn" class="hidden peer" />
+                    <label
+                        for="finishBtn"
+                        class="h-17 w-full text-xl font-IBM font-light text-white flex items-center justify-center cursor-pointer peer-checked:bg-red-dark peer-checked:rounded-lg"
+                    >
+                        {submitBtn[switchUIInt]}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END SECTION #5-->
+
+    <!--Section 6: Order Submitted -->
+    <section class="flex flex-col items-center justify-center mt-5 mx-9">
+        <div class="mx-4 w-full">
+            <!-- Question Header -->
+            <div class="w-full bg-black text-center">
+                <div class="m-auto text-3xl font-IBM font-light text-white">
+                    {sixthSection[switchUIInt]}
+                </div>
+            </div>
+            <!-- Cream Section #6  -->
+            <div class="w-full flex flex-col items-center p-4 bg-offwhite">
+                <!-- Anything Else? -->
+                <div class="mb-3 text-2xl font-IBM text-black font-bold">
+                    {firstQuestion6[switchUIInt]}
+                </div>
+                <!--Image-->
+                <img
+                    class=""
+                    src={orderSuccess}
+                    alt="Order Success"
+                    on:dblclick={altUI}
+                />
+            </div>
+        </div>
+    </section>
+    <!--END SECTION #6-->
 </main>
