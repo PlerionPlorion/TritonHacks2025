@@ -51,6 +51,15 @@
         "How many hostiles in the room?",
         "How much cheese would you like?",
     ];
+    let sixthQuestion2 = [
+        "How many others are in the room?",
+        "How spicy do you want your cheese?",
+    ];
+
+    let radioBtnSet = [
+        ["0", "1", "2", "3", "4+"],
+        ["1", "2", "3", "4", "5"],
+    ];
 
     function altUI() {
         switchUI = !switchUI;
@@ -240,227 +249,245 @@
             </div>
             <!-- Cream Section #2  -->
             <div class="w-full flex flex-col items-center p-4 bg-offwhite">
-                <!-- Are you being held hostage? -->
-                <div
-                    class="text-left text-2xl font-IBM text-black font-bold float-left"
-                >
-                    {firstQuestion2[switchUIInt]}
-                </div>
-
-                <!--If yes, are they armed?-->
-                <div class="text-2xl font-IBM text-black font-bold float-left">
-                    {secondQuestion2[switchUIInt]}
-                </div>
-
-                <!--If yes, with what?-->
-                <div class="text-2xl font-IBM text-black font-bold">
-                    {thirdQuestion2[switchUIInt]}
-                </div>
-                <!--Blade Answer Button-->
-                <div class="mt-4 flex">
-                    <div
-                        class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
-                    >
-                        <button
-                            class="m-5 text-xl font-IBM font-light text-white"
+                <div class="w-full text-left flex flex-col">
+                    <div class="flex">
+                        <!-- Are you being held hostage? -->
+                        <div
+                            class="text-left text-2xl font-IBM text-black font-bold float-left"
                         >
-                            {bladeBtn[switchUIInt]}
-                        </button>
-                    </div>
-                    <!--Firearm Answer Button-->
-                    <div
-                        class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
-                    >
-                        <button
-                            class="m-5 text-xl font-IBM font-light text-white"
+                            {firstQuestion2[switchUIInt]}
+                        </div>
+                        <input type="checkbox" value="" class="sr-only peer" />
+                        
+                        <!--If yes, are they armed?-->
+                        <div
+                            class="text-2xl font-IBM text-black font-bold float-left"
                         >
-                            {firearmBtn[switchUIInt]}
-                        </button>
+                            {secondQuestion2[switchUIInt]}
+                        </div>
+
+                        <!--If yes, with what?-->
+                        <div class="text-2xl font-IBM text-black font-bold">
+                            {thirdQuestion2[switchUIInt]}
+                        </div>
                     </div>
-                    <!--Explosive Answer Btn-->
-                    <div
-                        class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
-                    >
-                        <button
-                            class="m-5 text-xl font-IBM font-light text-white"
+                    <!--Blade Answer Button-->
+                    <div class="mt-4 flex">
+                        <div
+                            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
                         >
-                            {exlplosiveBtn[switchUIInt]}
-                        </button>
+                            <button
+                                class="m-5 text-xl font-IBM font-light text-white"
+                            >
+                                {bladeBtn[switchUIInt]}
+                            </button>
+                        </div>
+                        <!--Firearm Answer Button-->
+                        <div
+                            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+                        >
+                            <button
+                                class="m-5 text-xl font-IBM font-light text-white"
+                            >
+                                {firearmBtn[switchUIInt]}
+                            </button>
+                        </div>
+                        <!--Explosive Answer Btn-->
+                        <div
+                            class="w-fit mx-2 bg-greyblue flex flex-box float-left rounded-lg"
+                        >
+                            <button
+                                class="m-5 text-xl font-IBM font-light text-white"
+                            >
+                                {exlplosiveBtn[switchUIInt]}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--Briefly Describe Weapon-->
+                    <div class="mt-4">
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="BRIEFLY DESCRIBE"
+                            class="w-fit bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        />
+                    </div>
+
+                    <div class="w-full text-left flex flex-col">
+                        <!--Are you hurt?-->
+                        <div
+                            class="mt-4 text-2xl font-IBM text-black font-bold"
+                        >
+                            {fourthQuestion2[switchUIInt]}
+                        </div>
+                        <!-- How many hostiles in the room? -->
+                        <div
+                            class="mt-4 text-2xl font-IBM text-black font-bold"
+                        >
+                            {fifthQuestion2[switchUIInt]}
+                        </div>
+                        <!-- Any minors in the room?-->
+                         <div
+                            class="mt-4 text-2xl font-IBM text-black font-bold"
+                        >
+                            {sixthQuestion2[switchUIInt]}
+                        </div>
+                        
+                    </div>
+
+                    <!-- Temporary Line break -->
+                    <div
+                        class="mt-4 self-stretch outline-[2px] outline-black"
+                    ></div>
+
+                    <!-- RADIO SET 1 (HOSTILES) -->
+                    <div>
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="hostiles" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][0]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="hostiles" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][1]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="hostiles" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][2]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="hostiles" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][3]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="hostiles" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][4]}</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RADIO SET 2 (OTHERS) -->
+                    <div>
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="others" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][0]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="others" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][1]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="others" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][2]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="others" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][3]}</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="frame-5 mx-fit w-fit">
+                            <div>
+                                <label class="container">
+                                    <input type="radio" name="others" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <span class="font-IBM text-redlight font-bold"
+                                    >{radioBtnSet[switchUIInt][4]}</span
+                                >
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!--Briefly Describe Weapon-->
-                <div class="mt-4">
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="BRIEFLY DESCRIBE"
-                        class="w-fit bg-white rounded-xl border-4 border-red-dark border- focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                </div>
-
-                <!--Are you hurt?-->
-                <div class="mt-4 text-2xl font-IBM text-black font-bold">
-                    {fourthQuestion2[switchUIInt]}
-                </div>
-
-                <!-- How many hostiles in the room? -->
-                <div class="mt-4 text-2xl font-IBM text-black font-bold">
-                    {fifthQuestion2[switchUIInt]}
-                </div>
-
-                <!-- Temporary Line break -->
-                <div
-                    class="mt-4 self-stretch outline-[2px] outline-black"
-                ></div>
-
-                <!-- RADIO SET 2 (others) -->
-                <div>
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >0</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >1</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >2</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >3</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >4+</span
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >0</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >1</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >2</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >3</span
-                            >
-                        </div>
-                    </div>
-
-                    <div class="frame-5 mx-fit w-fit">
-                        <div>
-                            <label class="container">
-                                <input type="radio" name="others" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span class="font-IBM text-redlight font-bold"
-                                >4+</span
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                
             </div>
         </div>
     </section>
