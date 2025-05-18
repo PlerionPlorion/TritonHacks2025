@@ -1,8 +1,10 @@
 ---
 
-# Vite + Svelte + Electron + Tailwind Base
+# N.11 Pizza
 
-Boilerplate using **Vite**, **Svelte**, **Electron**, and **Tailwind CSS**.
+![N11Blurb](https://github.com/PlerionPlorion/TritonHacks2025/blob/main/src/assets/N11Blurb.png "N11 Logo")
+
+*A Discreet 911 Hotline!*
 
 ---
 
